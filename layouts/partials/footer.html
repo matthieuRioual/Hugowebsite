@@ -1,0 +1,11 @@
+<footer class="site-footer">
+    <div class="inner">
+        {{ with .Site.Params.copyright }}<section class="copyright">{{ . | markdownify }}</section>{{ end }}
+        <section>{{ echoParam .Site.Params "hidebyline" }}</section>
+        {{ if ne .Site.Params.hidedesignbyline true }}<section>
+            <!-- TODO: Change link to https://themes.gohugo.io/hugo-scroll/ once
+            https://github.com/gohugoio/hugoThemes/issues/881 is solved. -->
+            Web site build with Hugo ©<a href="hhttps://www.metadot.com/" title="Métadot">metadot</a> Corporation. All Rights Reserved.
+        </section>{{ end }}
+    </div>
+</footer>

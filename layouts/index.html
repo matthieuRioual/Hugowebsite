@@ -1,0 +1,63 @@
+{{ define "main" }}
+
+<!-- intro-->
+{{ $headless := .Site.GetPage "/homepage" }}
+{{ $sections := $headless.Resources.ByType "page" }}
+<header id="site-head" {{ with .Params.header_image }}style="background-image: url({{ . }})" {{ end }}>
+    <div class="vertical">
+        <div id="site-head-content" class="inner">
+
+            {{ with .Params.header_headline }}<h1 class="blog-title">{{ . }}</h1>{{ end }}
+            {{ with .Params.header_subheadline }}<h2 class="blog-description">{{ . }}</h2>{{ end }}
+
+            {{ range $index_val, $elem_val := $sections }}
+            <a class='btn site-menu' data-title='{{ .Title }}'>{{ .Title }}</a>
+            {{ end }}
+            <i id='header-arrow' class="fa fa-angle-down"></i>
+        </div>
+    </div>
+</header>
+<!-- intro-->
+
+
+<!-- products -->
+{{ if site.Data.homepage.products.enable }}
+<section class="section pb-0">
+    <div class="container first">
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                {{ with site.Data.homepage.products }}
+                <h2 Style="font-size:42px; font-family: quicksand;">{{ .title | markdownify }}</h2>
+                {{ end }}
+            </div>
+            {{ range first 6 (where site.RegularPages "Type" "keyboard") }}
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card border-0 text-center">
+                    <a href="{{ .Permalink }}">
+                        <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" Style="width: 300px;height: auto;"
+                            class="card-img-top">
+                    </a>
+                    <div class="card-body">
+                        <a href="{{ .Permalink }}" class="h4">{{ .Title }}</a>
+                        <p>{{ .Params.Description }}</p>
+                        <div class="mb-4">
+                            <span class="lead text-primary">{{ .Params.Price }}</span>
+                            <s>{{ .Params.PriceBefore }}</s>
+                        </div>
+                        <button class="snipcart-add-item btn btn-sm btn-outline-primary"
+                            data-item-id="{{ .Params.ProductID }}" data-item-name="{{ .Title }}"
+                            data-item-image="{{ .Params.image | absURL }}" data-item-price="{{ .Params.Price }}"
+                            data-item-url="{{ .Permalink }}">
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+<!-- /products -->
+
+{{ end }}
