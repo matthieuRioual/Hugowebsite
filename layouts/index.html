@@ -30,7 +30,7 @@
                 <h2 Style="font-size:42px; font-family: quicksand;">{{ .title | markdownify }}</h2>
                 {{ end }}
             </div>
-            {{ range first 6 (where site.RegularPages "Type" "keyboard") }}
+            {{ range first 6 (where site.RegularPages "Type" "keyboards") }}
             <div class="col-lg-4 col-sm-6 mb-4">
                 <div class="card border-0 text-center">
                     <a href="{{ .Permalink }}">
@@ -44,11 +44,10 @@
                             <span class="lead text-primary">{{ .Params.Price }}</span>
                             <s>{{ .Params.PriceBefore }}</s>
                         </div>
-                        <button class="snipcart-add-item btn btn-sm btn-outline-primary"
-                            data-item-id="{{ .Params.ProductID }}" data-item-name="{{ .Title }}"
+                        <button class="snipcart-add-item btn btn-sm btn-outline-primary" data-item-name="{{ .Title }}"
                             data-item-image="{{ .Params.image | absURL }}" data-item-price="{{ .Params.Price }}"
                             data-item-url="{{ .Permalink }}">
-                            Add to cart
+                            En savoir plus
                         </button>
                     </div>
                 </div>
@@ -56,6 +55,11 @@
             {{ end }}
         </div>
     </div>
+    <div class='mb-4' Style='text-align: center;'><button class="snipcart-add-item btn btn-sm btn-outline-primary"
+            onclick="window.location.href='http://localhost:1313/keyboards/'">
+            Look at all the products
+        </button></div>
+
 </section>
 {{ end }}
 <!-- /products -->

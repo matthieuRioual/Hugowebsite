@@ -1,40 +1,53 @@
-<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<head>
+     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-<title>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+     <title>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
 
-{{ with .Site.Params.favicon }}
-<link rel="shortcut icon" href="{{ . | absURL }}" type="image/png" />{{ end }}
+     {{ with .Site.Params.favicon }}
+     <link rel="shortcut icon" href="{{ . | absURL }}" type="image/png" />{{ end }}
 
-{{ with .Site.Params.description }}
-<meta name="description" content="{{ . }}" />{{ end }}
-{{ with .Site.Params.meta.keywords }}
-<meta name="keywords" content="{{ . }}" />{{ end }}
-<meta name="referrer" content="no-referrer-when-downgrade" />
+     {{ with .Site.Params.description }}
+     <meta name="description" content="{{ . }}" />{{ end }}
+     {{ with .Site.Params.meta.keywords }}
+     <meta name="keywords" content="{{ . }}" />{{ end }}
+     <meta name="referrer" content="no-referrer-when-downgrade" />
 
-<meta name="HandheldFriendly" content="True" />
-<meta name="MobileOptimized" content="320" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <meta name="HandheldFriendly" content="True" />
+     <meta name="MobileOptimized" content="320" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="stylesheet" href='{{ "css/screen.css" | absURL }}'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet'
-     type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Roboto+Slab:400,100,300,700'
-     rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href='{{ "font-awesome/css/font-awesome.min.css" | absURL }}'>
+     <link rel="stylesheet" href='{{ "css/screen.css" | absURL }}'>
 
-{{ "<!-- plugins -->" | safeHTML }}
-{{ range site.Params.plugins.css }}
-<link rel="stylesheet" href="{{ .link | absURL }}">
-{{ end }}
-<link id="snipcart-theme" type="text/css" href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css"
-     rel="stylesheet">
+     {{ "<!-- plugins -->" | safeHTML }}
+     {{ range site.Params.plugins.css }}
+     <link rel="stylesheet" href="{{ .link | absURL }}">
+     {{ end }}
+     <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.20/default/snipcart.css" />
+     <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet'
+          type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800|Roboto+Slab:400,100,300,700'
+          rel='stylesheet' type='text/css'>
+     <!-- Font Awesome -->
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+     <!-- Google Fonts -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+     <!-- Bootstrap core CSS -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <!-- Material Design Bootstrap -->
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
 
-{{ template "_internal/opengraph.html" . }}
-{{ template "_internal/twitter_cards.html" . }}
-{{ template "_internal/schema.html" . }}
+     {{ "<!-- Main Stylesheet -->" | safeHTML }}
+     {{ $styles := resources.Get "scss/style.scss" | resources.ToCSS | minify }}
+     <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
 
-<!-- A partial to be overwritten by the user.
+     {{ template "_internal/opengraph.html" . }}
+     {{ template "_internal/twitter_cards.html" . }}
+     {{ template "_internal/schema.html" . }}
+
+     <!-- A partial to be overwritten by the user.
      Simply place a custom_head.html into
      your local /layouts/partials-directory -->
-{{- partial "custom_head.html" . -}}
+     {{- partial "custom_head.html" . -}}
+</head>

@@ -1,11 +1,175 @@
 <footer class="site-footer">
+
+    <div id="top-footer">
+
+        <section class="m-4">
+
+            <!--Section heading-->
+            <h2 class="h1-responsive font-weight-bold text-center my-4 ">Contact us</h2>
+            <!--Section description-->
+            <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to
+                contact us directly. Our team will come back to you within
+                a matter of hours to help you.</p>
+
+            <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-9 col-sm-12 mb-md-0 mb-5">
+                    <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                        <!--Grid row-->
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-md-6">
+
+                                <div class="md-form mb-0">
+                                    <input type="text" id="name" name="name" class="form-control">
+                                    <label for="name" class="">Your name</label>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+
+                            <!--Grid column-->
+                            <div class="col-md-6">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="email" name="email" class="form-control">
+                                    <label for="email" class="">Your email</label>
+                                </div>
+                            </div>
+                            <!--Grid column-->
+
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="md-form mb-0">
+                                    <input type="text" id="subject" name="subject" class="form-control">
+                                    <label for="subject" class="">Subject</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Grid row-->
+
+                        <!--Grid row-->
+                        <div class="row mt-3">
+
+                            <!--Grid column-->
+                            <div class="col-md-12">
+
+                                <div class="form-group active-pink-textarea">
+                                    <i class="fas fa-angle-double-right prefix mr-2"></i>
+                                    <label for="message">Your message</label>
+                                    <textarea type="text" id="message" name="message" rows="5"
+                                        class="form-control md-textarea"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--Grid row-->
+
+                    </form>
+
+                    <div class="text-center text-md-left">
+                        <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                    </div>
+                    <div class="status"></div>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-md-3 text-center">
+                    <ul class="list-unstyled mb-0">
+                        <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                            <p>San Francisco, CA 94126, USA</p>
+                        </li>
+
+                        <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                            <p>+ 01 234 567 89</p>
+                        </li>
+
+                        <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                            <p>contact@mdbootstrap.com</p>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+            </div>
+    </div>
+
+
+    <div id="bottom-footer">
+        <p class="pt-2 mb-0 white-text" style="font-family: cursive;">Follow us on our multiple device</p>
+        <!-- Footer Elements -->
+        <div class="container" id="footer">
+
+            <!-- Grid row-->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-12">
+                    <div class="mb-5 flex-center">
+
+                        <!-- Facebook -->
+                        <a class="fb-ic">
+                            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic">
+                            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!-- Google +-->
+                        <a class="gplus-ic">
+                            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!--Linkedin -->
+                        <a class="li-ic">
+                            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic">
+                            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!--Pinterest-->
+                        <a class="pin-ic">
+                            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+
+    </div>
+    <!-- Footer Elements -->
+
+
     <div class="inner">
         {{ with .Site.Params.copyright }}<section class="copyright">{{ . | markdownify }}</section>{{ end }}
         <section>{{ echoParam .Site.Params "hidebyline" }}</section>
         {{ if ne .Site.Params.hidedesignbyline true }}<section>
             <!-- TODO: Change link to https://themes.gohugo.io/hugo-scroll/ once
             https://github.com/gohugoio/hugoThemes/issues/881 is solved. -->
-            Web site build with Hugo ©<a href="hhttps://www.metadot.com/" title="Métadot">metadot</a> Corporation. All Rights Reserved.
+            Web site build with Hugo ©<a href="hhttps://www.metadot.com/" title="Métadot">metadot</a> Corporation. All
+            Rights Reserved.
         </section>{{ end }}
     </div>
 </footer>
+
+{{ "<!-- Google Map API -->" | safeHTML }}
+<script src="{{ site.Params.gmapAPI | absURL }}"></script>
+{{ "<!-- JS Plugins -->" | safeHTML }}
+{{ range site.Params.plugins.js}}
+<script src="{{ .link | absURL }}"></script>
+{{ end }}
+
+<!-- snipcart -->
+<script type="text/javascript" id="snipcart"
+    data-api-key="MDg3NWNiMDktY2RlYi00MjUzLTg4OWQtODg4MjAyNWM3ZjI2NjM3MzM4NTMzNzIzMTEyMTM0"
+    src="https://cdn.snipcart.com/scripts/snipcart.js">
+    </script>

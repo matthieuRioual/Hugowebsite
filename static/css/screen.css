@@ -390,13 +390,7 @@
    table tbody > tr:nth-child(odd) > th {
        background-color: #f6f6f6;
    }
-   
-   table.plain {
-       tbody > tr:nth-child(odd) > td,
-       tbody > tr:nth-child(odd) > th {
-           background: transparent;
-       }
-   }
+  
    
    li {
      margin-left: 30px;
@@ -800,9 +794,12 @@
        line-height: 1.5em;
        color: #BBC7CC;
        text-align: center;
-       background: #22343A;
    }
-   
+
+   #top-footer{
+       background: #9fd067;
+   }
+
    .site-footer a {
        color: #BBC7CC;
        text-decoration: underline;
